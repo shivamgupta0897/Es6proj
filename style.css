@@ -1,0 +1,16 @@
+.modal-header, h2, .close {
+            background-color: #5cb85c;
+            color:white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .jumbotron{
+            font-family: 'Lobster', cursive;
+            
+            background-color:lightsteelblue;
+        }
+        .modal-body
+        {
+            padding:40px 50px;
+        }
