@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="style.js"></script>
+        <script src="main.js"></script>
         <link href="style.css" rel="stylesheet" type="text/css"></link>
         
     </head>
@@ -18,32 +18,29 @@
         </div>
         <div class="container">
             <div class="row">
-                
-                <div class="col-sm-4">
-                        <button type="submit" class="btn btn-primary btn-lg" id="add" onclick="addDetails()"><span class="glyphicon glyphicon-plus"></span>Add New Student's Details</button>
-                </div>
-                <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg" id="edit" onclick="editDetails()" data><span class="glyphicon glyphicon-edit"></span>Edit Student's Details</button>
-                </div>
-                <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg" id="delete" onclick="deleteDetails()"><span class="glyphicon glyphicon-trash"></span>Delete Record</button>
-                </div>
-
-            </div>
-            </div>
-            <br>
-            <br>
-       
-        <div class="container">
-            <div class="row">
-            <form class="form-inline" id="frm" method="post">
+            <form class="form-inline" id="frm" action="javascript:addDetails()">
+                    <div class="row">
+                            
+                            <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="add"><span class="glyphicon glyphicon-plus"></span>Add New Student's Details</button>
+                            </div>
+                            <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-lg" id="edit" onclick="editDetails()" data><span class="glyphicon glyphicon-edit"></span>Edit Student's Details</button>
+                            </div>
+                            <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-lg" id="delete" onclick="deleteDetails()"><span class="glyphicon glyphicon-trash"></span>Delete Record</button>
+                            </div>
+            
+                        </div>
+                        <br>
+                        <br>
                 <div class="form-group">
                     <label for="Name">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Please enter a valid string" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="rollno">RollNo:</label>
-                    <input tyep="text" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="rollno" placeholder="Enter RollNo" name="RollNo" required >
+                    <input tyep="text" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="rollno" pattern="[0-9]{10}" title=" Enter a 10 digit roll number" placeholder="Enter RollNo" name="RollNo" required >
                 </div>
                 <div class="form-group">
                     <label for="stream">Stream:</label>
@@ -51,7 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label for="passoutyear">PassOut Year:</label>
-                    <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="passoutyear" placeholder="Enter PassOut Year" name="PassOut Year" required>
+                    <input type="text" pattern="[0-9]{4}" title="Enter a Four digit number" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="passoutyear" placeholder="Enter PassOut Year" name="PassOut Year" required>
                 </div>
             </form>
         </div>
@@ -78,7 +75,7 @@
         </div>
 
     </div>
-    <div class="modal" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="padding: 35px 50px;">
@@ -86,34 +83,22 @@
                     <h2><span class="glyphicon glyphicon-edit"></span> Edit</h2>
                 </div>
                 <div class="modal-body">
-                    <form role="form">
-                        <div class="form-group">
+                    <form role="form-inline">
+                             <div class="form-group" id="form1">
                                 <label for="Name">Name:</label>
-                                <input type="text" class="form-control" id="nameD" placeholder="Enter Name" name="name" required>
-                            </div>
-                            <div class="form-group">
+                                <input type="text" class="form-control" id="nameD"  required>
                                 <label for="rollno">RollNo:</label>
-                                <input tyep="text" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="rollnoD" placeholder="Enter RollNo" name="RollNo" required`>
-                            </div>
-                            <div class="form-group">
+                                <input type="text" id="rollnoD" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control"   required`>
                                 <label for="stream">Stream:</label>
-                                <input type="text"  class="form-control" id="streamD" placeholder="Enter Stream" name="Stream" required>
-                            </div>
-                            <div class="form-group">
+                                <input type="text"  class="form-control" id="streamD" required>
                                 <label for="passoutyear">PassOut Year:</label>
-                                <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control" id="passoutyearD" placeholder="Enter PassOut Year" name="PassOut Year" required>
-
-                </div>
-                <button type="submit" class="btn btn-success btn-block" id="submitD" onclick="submitB()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+                                <input type="text" id="passoutyearD" onkeypress="return event.charCode>=48 && event.charCode<=57" class="form-control"    required>
+                            </div>
+                            <button type="button" class="btn btn-success"  data-dismiss="modal" id="submitD" ><span class="glyphicon glyphicon-ok"></span> Submit</button>
                     </form>
-
+                 </div>
             </div>
-
         </div>
-    </div>
-    </div>
-    
-
-        
+    </div>     
     </body>
 </html>
